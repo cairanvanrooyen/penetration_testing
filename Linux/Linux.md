@@ -1,5 +1,13 @@
 # Linux Penetration Testing Reference
 
+## Introduction
+
+This comprehensive guide covers essential Linux commands and techniques for penetration testing and cybersecurity professionals. Linux is the foundation of most penetration testing distributions and understanding its command-line interface is crucial for effective security assessments.
+
+This reference is organized into practical sections covering file system navigation, user enumeration, networking, privilege escalation, and system monitoring. Each section includes both modern and legacy commands to ensure compatibility across different Linux distributions and versions.
+
+Whether you're conducting reconnaissance, post-exploitation enumeration, or maintaining persistence, these commands will serve as your go-to reference for Linux-based security testing.
+
 ## Essential Resources
 - **explainshell.com** - Explains shell commands in detail
 
@@ -26,10 +34,57 @@ whereis command           # Find binary, source, manual for command
 ```
 
 ### File Permissions & Ownership
+
+#### Understanding File Permissions
+File permissions in Linux use a 3-digit octal system where each digit represents permissions for:
+- **First digit**: Owner (user) permissions
+- **Second digit**: Group permissions  
+- **Third digit**: Other (world) permissions
+
+#### Permission Values Table
+
+| Number | Binary | Permissions | Symbol | Description |
+|--------|--------|-------------|--------|-------------|
+| 0      | 000    | ---         | ---    | No permissions |
+| 1      | 001    | --x         | --x    | Execute only |
+| 2      | 010    | -w-         | -w-    | Write only |
+| 3      | 011    | -wx         | -wx    | Write + Execute |
+| 4      | 100    | r--         | r--    | Read only |
+| 5      | 101    | r-x         | r-x    | Read + Execute |
+| 6      | 110    | rw-         | rw-    | Read + Write |
+| 7      | 111    | rwx         | rwx    | Read + Write + Execute |
+
+#### Common Permission Combinations
+
+| chmod | Owner | Group | Other | Use Case |
+|-------|-------|-------|-------|----------|
+| 644   | rw-   | r--   | r--   | Regular files (documents, configs) |
+| 755   | rwx   | r-x   | r-x   | Executable files, directories |
+| 700   | rwx   | ---   | ---   | Private files/directories |
+| 777   | rwx   | rwx   | rwx   | Full access (security risk) |
+| 600   | rw-   | ---   | ---   | Private files (SSH keys) |
+| 664   | rw-   | rw-   | r--   | Group-writable files |
+| 775   | rwx   | rwx   | r-x   | Group-writable directories |
+| 4755  | rwsr-x| r-x   | r-x   | SUID executable |
+| 2755  | rwxr-s| r-x   | r-x   | SGID executable |
+
+#### Special Permissions
+
+| Permission | Symbol | Octal | Description |
+|------------|--------|-------|-------------|
+| SUID       | s (user)| 4000 | Run as file owner |
+| SGID       | s (group)| 2000| Run as file group |
+| Sticky Bit | t       | 1000 | Only owner can delete |
+
+#### chmod Commands
 ```bash
 chmod 755 file            # Change file permissions (rwxr-xr-x)
 chmod 777 file            # Full permissions (rwxrwxrwx)
 chmod +x script.sh        # Make file executable
+chmod u+x file            # Add execute for owner
+chmod g-w file            # Remove write for group
+chmod o=r file            # Set other to read only
+chmod a+r file            # Add read for all (a=all)
 chown user:group file     # Change file ownership
 umask 022                 # Set default permissions
 ```
@@ -116,6 +171,27 @@ traceroute host           # Trace route to host
 nslookup domain           # DNS lookup
 dig domain                # DNS lookup (detailed)
 host domain               # Simple DNS lookup
+```
+
+### VPN & Remote Connections
+
+| Command | Description |
+|---------|-------------|
+| `sudo openvpn user.ovpn` | Connect to VPN |
+| `ifconfig / ip a` | Show our IP address |
+| `netstat -rn` | Show networks accessible via the VPN |
+| `ssh user@10.10.10.10` | SSH to a remote server |
+| `ftp 10.129.42.253` | FTP to a remote server |
+
+#### Additional Remote Connection Commands
+```bash
+scp file user@host:/path/         # Copy file to remote host
+scp user@host:/path/file .        # Copy file from remote host
+rsync -av local/ user@host:remote/ # Sync directories
+ssh -L 8080:localhost:80 user@host # SSH port forwarding
+ssh -D 1080 user@host             # SSH SOCKS proxy
+telnet host port                  # Telnet connection
+nc host port                     # Netcat connection
 ```
 
 ## Text Processing & File Operations
@@ -209,16 +285,6 @@ sudo systemctl start ssh          # Start SSH service
 ssh user@host                     # Connect to remote host
 ssh -p 2222 user@host            # Connect using specific port
 scp file user@host:/path/         # Copy file to remote host
-```
-
-## Kali Linux Specific
-
-### PimpMyKali Tool
-```bash
-cd /opt
-git clone https://github.com/Dewalt-arch/pimpmykali
-cd pimpmykali
-sudo ./pimpmykali.sh
 ```
 
 ## Scripting & Automation
