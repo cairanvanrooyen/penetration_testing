@@ -33,7 +33,10 @@ A comprehensive, structured collection of penetration testing methodologies, too
 git clone https://github.com/cairanvanrooyen/penetration_testing.git
 cd penetration_testing
 
-# Start with the basics
+# Start with the complete methodology
+cat ETHICAL-HACKING-METHODOLOGY.md
+
+# Begin with essentials
 cd 00-getting-started
 
 # Follow the numbered methodology
@@ -84,14 +87,11 @@ penetration_testing/
 ├── 📊 06-reporting/                # Documentation & Communication
 │   └── 01-documentation-reporting.md # Professional reporting standards
 │
-├── 📖 90-cheat-sheets/            # Quick Reference Guides
-│   └── 01-getting-started-cheatsheet.md
-│
-├── 🐧 91-linux/                   # Linux-Specific Resources
+├── � 90-linux/                   # Linux-Specific Resources
 │   ├── 01-linux.md               # Linux commands & techniques
 │   └── 02-kali.md                # Kali Linux specialized tools
 │
-├── 🐍 92-python/                  # Python for Penetration Testing
+├── 🐍 91-python/                  # Python for Penetration Testing
 │   └── 01-python.md              # Python scripting reference
 │
 └── 🎓 99-training-boxes/          # Practice Environments
@@ -140,14 +140,14 @@ This repository follows the **6-phase penetration testing methodology** based on
 ## 📚 Learning Path
 
 ### 🌱 Beginner (Start Here)
-1. **Prerequisites**: `00-getting-started/` - Master essential tools (vim, tmux, netcat)
-2. **Fundamentals**: `90-cheat-sheets/` - Quick reference guides
-3. **Linux Basics**: `91-linux/01-linux.md` - Command line proficiency
+1. **Complete Methodology**: `ETHICAL-HACKING-METHODOLOGY.md` - Comprehensive step-by-step guide
+2. **Prerequisites**: `00-getting-started/` - Master essential tools (vim, tmux, netcat)
+3. **Linux Basics**: `90-linux/01-linux.md` - Command line proficiency
 
 ### 🌿 Intermediate
 1. **Methodology**: Follow `01-` through `06-` in sequence
 2. **Hands-on Practice**: `99-training-boxes/` environments
-3. **Specialized Tools**: `91-linux/02-kali.md`, `92-python/`
+3. **Specialized Tools**: `90-linux/02-kali.md`, `91-python/`
 
 ### 🌳 Advanced
 1. **Custom Exploitation**: Develop custom payloads and scripts
@@ -173,6 +173,10 @@ Each folder contains comprehensive tool documentation with:
 | **Privilege Escalation** | LinPEAS, WinPEAS, PEASS-ng | `03-exploitation/03-privilege-escalation.md` |
 | **Post-Exploitation** | Metasploit, Custom shells | `04-maintaining-access/01-shells.md` |
 | **Vulnerability Assessment** | Nessus, OpenVAS, Nuclei | `02-scanning-enumeration/06-vulnerability-assessment.md` |
+
+## 🎯 Master Methodology
+
+📖 **[ETHICAL-HACKING-METHODOLOGY.md](ETHICAL-HACKING-METHODOLOGY.md)** - Complete step-by-step penetration testing guide with commands, tools, and techniques for authorized security testing.
 
 ## 🏆 Training Labs
 
