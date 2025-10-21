@@ -1,0 +1,92 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.vim/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*.backup
+
+# Security-sensitive files (NEVER commit these)
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+passwords.txt
+credentials.txt
+config.txt
+secrets/
+private/
+
+# Tool-specific temporary files
+nmap_scan_*
+burp_project_*
+metasploit_*
+*.msf
+*.rc
+
+# Compiled and generated files
+*.exe
+*.dll
+*.so
+*.dylib
+*.class
+*.jar
+*.war
+*.ear
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+venv/
+env/
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Documentation build files
+_site/
+.jekyll-cache/
+.sass-cache/
+
+# Local environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Testing artifacts
+screenshots/
+evidence/
+reports/
+scans/
+results/
+
+# Note: This .gitignore is designed to prevent accidental
+# commit of sensitive security information, credentials,
+# or personal data that could be collected during
+# penetration testing activities.

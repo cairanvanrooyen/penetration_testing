@@ -1,1 +1,0 @@
-For having multiple windows in one terminal

@@ -1,1 +1,0 @@
-Python truth tables
